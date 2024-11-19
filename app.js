@@ -40,7 +40,6 @@ app.use(express.static("public"));
 app.get("/", (req, res) => res.send("Server del mio blog"));
 app.get("/bacheca", (req, res) => {
   const filter = req.query.filter ?? "";
-  console.log(req.query.filter);
 
   const filteredPosts = posts.filter((post) => {
     let validPost;
@@ -49,6 +48,7 @@ app.get("/bacheca", (req, res) => {
     });
     return validPost;
   });
+
   res.json({ posts: filteredPosts, conteggio: filteredPosts.length });
 });
 
